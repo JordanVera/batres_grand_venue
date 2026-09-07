@@ -182,7 +182,7 @@ export default function Navbar() {
           <SocialLinks
             className="mr-4 md:mr-2"
             iconSize={18}
-            linkClassName="text-white/80 hover:text-white"
+            linkClassName="[&_img]:brightness-0 [&_img]:invert"
           />
           <Link
             href="/tour"
