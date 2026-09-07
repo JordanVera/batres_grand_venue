@@ -1,19 +1,24 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Phone } from 'lucide-react';
+import { ChevronDown, Menu, X, Phone } from 'lucide-react';
 import { NAV_LINKS, COMPANY } from '@/lib/data';
+import { PACKAGE_NAV } from '@/lib/pricing';
 import { cn } from '@/lib/utils';
 import SocialLinks from '@/components/layout/SocialLinks';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [packagesOpen, setPackagesOpen] = useState(false);
+  const [mobilePackagesOpen, setMobilePackagesOpen] = useState(false);
+  const packagesRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
+  const packagesActive = pathname.startsWith('/packages');
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -24,6 +29,8 @@ export default function Navbar() {
 
   useEffect(() => {
     setMobileOpen(false);
+    setPackagesOpen(false);
+    setMobilePackagesOpen(false);
   }, [pathname]);
 
   useEffect(() => {
@@ -32,6 +39,20 @@ export default function Navbar() {
       document.body.style.overflow = '';
     };
   }, [mobileOpen]);
+
+  useEffect(() => {
+    if (!packagesOpen) return;
+    const onPointerDown = (event: MouseEvent) => {
+      if (
+        packagesRef.current &&
+        !packagesRef.current.contains(event.target as Node)
+      ) {
+        setPackagesOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', onPointerDown);
+    return () => document.removeEventListener('mousedown', onPointerDown);
+  }, [packagesOpen]);
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-3 sm:pt-4">
@@ -45,17 +66,91 @@ export default function Navbar() {
       >
         <Link href="/" className="flex shrink-0 items-center gap-2 pl-1">
           <Image
-            src="/emblem.png"
+            src="/logo-main.png"
             alt={COMPANY.name}
             width={160}
             height={48}
-            className="w-auto h-16"
+            className="h-16 w-auto"
             priority
           />
         </Link>
 
         <div className="hidden items-center gap-1 lg:flex">
           {NAV_LINKS.map((link) => {
+            if (link.href === '/packages') {
+              return (
+                <div
+                  key={link.href}
+                  ref={packagesRef}
+                  className="relative"
+                  onMouseEnter={() => setPackagesOpen(true)}
+                  onMouseLeave={() => setPackagesOpen(false)}
+                >
+                  <button
+                    type="button"
+                    aria-expanded={packagesOpen}
+                    aria-haspopup="true"
+                    onClick={() => setPackagesOpen((value) => !value)}
+                    className={cn(
+                      'group relative inline-flex items-center gap-1 rounded-full px-2.5 py-1.5 text-[11px] font-medium tracking-widest uppercase transition-colors xl:px-3',
+                      packagesActive
+                        ? 'text-white'
+                        : 'text-white/80 hover:text-white',
+                    )}
+                  >
+                    {link.label}
+                    <ChevronDown
+                      size={12}
+                      className={cn(
+                        'transition-transform duration-200',
+                        packagesOpen && 'rotate-180',
+                      )}
+                    />
+                    <span
+                      className={cn(
+                        'absolute inset-x-3.5 -bottom-0.5 h-px bg-white transition-transform duration-300',
+                        packagesActive || packagesOpen
+                          ? 'scale-x-100'
+                          : 'scale-x-0 group-hover:scale-x-100',
+                      )}
+                    />
+                  </button>
+
+                  <AnimatePresence>
+                    {packagesOpen ? (
+                      <motion.div
+                        initial={{ opacity: 0, y: 6 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 6 }}
+                        transition={{ duration: 0.15 }}
+                        className="absolute top-full left-1/2 z-50 pt-3 -translate-x-1/2"
+                      >
+                        <div className="min-w-[220px] rounded-2xl border border-white/15 bg-black py-2 shadow-xl shadow-black/40">
+                          {PACKAGE_NAV.map((item) => {
+                            const isActive = pathname === item.href;
+                            return (
+                              <Link
+                                key={item.href}
+                                href={item.href}
+                                className={cn(
+                                  'block px-4 py-2.5 text-[11px] tracking-widest uppercase transition-colors',
+                                  isActive
+                                    ? 'text-[#C4A35A]'
+                                    : 'text-white/75 hover:bg-white/5 hover:text-white',
+                                )}
+                              >
+                                {item.label}
+                              </Link>
+                            );
+                          })}
+                        </div>
+                      </motion.div>
+                    ) : null}
+                  </AnimatePresence>
+                </div>
+              );
+            }
+
             const isActive =
               pathname === link.href ||
               (link.href !== '/' && pathname.startsWith(`${link.href}/`));
@@ -91,7 +186,7 @@ export default function Navbar() {
           />
           <Link
             href="/tour"
-            className="hidden items-center rounded-full border border-white px-3.5 py-1.5 text-[10px] tracking-[0.2em] uppercase text-white transition-all duration-200 hover:bg-white hover:text-primary sm:inline-flex"
+            className="hidden items-center rounded-full border border-white px-3.5 py-1.5 text-[10px] tracking-[0.2em] text-white uppercase transition-all duration-200 hover:bg-white hover:text-primary sm:inline-flex"
           >
             Book a Tour
           </Link>
@@ -124,6 +219,65 @@ export default function Navbar() {
           >
             <div className="flex flex-col">
               {NAV_LINKS.map((link) => {
+                if (link.href === '/packages') {
+                  return (
+                    <div key={link.href} className="flex flex-col">
+                      <button
+                        type="button"
+                        aria-expanded={mobilePackagesOpen}
+                        onClick={() => setMobilePackagesOpen((value) => !value)}
+                        className={cn(
+                          'flex items-center justify-between rounded-xl px-3 py-2.5 text-sm font-medium transition hover:bg-white/10',
+                          packagesActive
+                            ? 'text-white'
+                            : 'text-white/80 hover:text-white',
+                        )}
+                      >
+                        {link.label}
+                        <ChevronDown
+                          size={16}
+                          className={cn(
+                            'transition-transform duration-200',
+                            mobilePackagesOpen && 'rotate-180',
+                          )}
+                        />
+                      </button>
+                      <AnimatePresence>
+                        {mobilePackagesOpen ? (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.18 }}
+                            className="overflow-hidden"
+                          >
+                            <div className="mb-1 ml-2 flex flex-col border-l border-white/15 pl-3">
+                              {PACKAGE_NAV.map((item) => {
+                                const isActive = pathname === item.href;
+                                return (
+                                  <Link
+                                    key={item.href}
+                                    href={item.href}
+                                    onClick={() => setMobileOpen(false)}
+                                    className={cn(
+                                      'rounded-xl px-3 py-2 text-sm transition hover:bg-white/10',
+                                      isActive
+                                        ? 'text-[#C4A35A]'
+                                        : 'text-white/70 hover:text-white',
+                                    )}
+                                  >
+                                    {item.label}
+                                  </Link>
+                                );
+                              })}
+                            </div>
+                          </motion.div>
+                        ) : null}
+                      </AnimatePresence>
+                    </div>
+                  );
+                }
+
                 const isActive = pathname === link.href;
                 return (
                   <Link
@@ -146,7 +300,7 @@ export default function Navbar() {
               <Link
                 href="/tour"
                 onClick={() => setMobileOpen(false)}
-                className="rounded-xl bg-white px-4 py-3 text-center text-sm font-semibold tracking-[0.15em] uppercase text-primary"
+                className="rounded-xl bg-white px-4 py-3 text-center text-sm font-semibold tracking-[0.15em] text-primary uppercase"
               >
                 Book a Tour
               </Link>

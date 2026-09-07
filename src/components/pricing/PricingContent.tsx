@@ -15,9 +15,9 @@ export default function PricingContent() {
       <section className="px-6 py-20 lg:px-8">
         <div className="mx-auto max-w-3xl text-center mb-16">
           <p className="text-base leading-relaxed text-foreground/65 sm:text-lg">
-            Wedding and event packages at our restored luxury Humble, Texas
-            estate. Choose a full wedding, ceremony only, or a private
-            celebration — reception hall, courtyard, and suites included.
+            Silver, Gold, and Platinum packages at our Humble banquet hall —
+            venue, décor, catering, and on-site staff for weddings,
+            quinceañeras, and private celebrations up to 250 guests.
           </p>
           <p className="mt-5 text-sm leading-relaxed text-foreground/50">
             Peak season dates (March–May, Sept–Dec) book quickly —{' '}
@@ -64,10 +64,10 @@ export default function PricingContent() {
                 ))}
               </ul>
               <Link
-                href="/contact"
+                href={pkg.href}
                 className="mt-8 inline-flex justify-center bg-[#C4A35A] px-6 py-3 text-xs tracking-[0.2em] uppercase text-black hover:bg-[#A6863F] transition-colors"
               >
-                Inquire About {pkg.name}
+                View {pkg.name}
               </Link>
             </article>
           ))}
@@ -106,6 +106,28 @@ export default function PricingContent() {
           </div>
         </section>
       ) : null}
+
+      <section className="px-6 py-16 lg:px-8 bg-[#0e0c08]">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-[#C4A35A] text-[10px] tracking-[0.35em] uppercase mb-4">
+            Seasonal & Intimate
+          </p>
+          <h2 className="font-serif text-white text-3xl mb-4">
+            Special Packages
+          </h2>
+          <p className="text-white/55 text-sm leading-relaxed mb-8">
+            Christmas corporate events from $4,350 and micro weddings from
+            $4,500 — customized for smaller gatherings and holiday
+            celebrations.
+          </p>
+          <Link
+            href="/packages/special"
+            className="inline-flex border border-[#C4A35A] px-6 py-3 text-xs tracking-[0.2em] uppercase text-[#C4A35A] transition-colors hover:bg-[#C4A35A] hover:text-black"
+          >
+            View Special Packages
+          </Link>
+        </div>
+      </section>
 
       <section className="px-6 py-16 lg:px-8 border-t border-border">
         <div className="mx-auto max-w-3xl">

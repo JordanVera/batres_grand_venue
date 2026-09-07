@@ -12,7 +12,7 @@ export default function Footer() {
           <div className="flex flex-col gap-4">
             <Link href="/" className="flex items-center gap-3">
               <Image
-                src="/logo.png"
+                src="/logo-main.png"
                 alt={COMPANY.name}
                 width={160}
                 height={48}
@@ -33,6 +33,26 @@ export default function Footer() {
             </h4>
             <ul className="flex flex-col gap-3">
               {NAV_LINKS.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm transition-colors hover:text-white"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <h4 className="mt-8 mb-4 text-xs tracking-[0.25em] text-white uppercase">
+              Packages
+            </h4>
+            <ul className="flex flex-col gap-3">
+              {[
+                { label: 'Silver', href: '/packages/silver' },
+                { label: 'Gold', href: '/packages/gold' },
+                { label: 'Platinum', href: '/packages/platinum' },
+                { label: 'Special', href: '/packages/special' },
+              ].map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}

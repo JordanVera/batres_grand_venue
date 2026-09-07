@@ -65,9 +65,13 @@ const idealEvents = [
 ];
 
 const venueStats = [
-  { value: '4,500', label: 'Luxury banquet hall', icon: Heart },
+  { value: '4,500 sq ft', label: 'Luxury banquet hall', icon: Heart },
   { value: `Up to ${COMPANY.maxGuests}`, label: 'Seated guests', icon: Users },
-  { value: `${COMPANY.googleRating.toFixed(1)}`, label: 'Google rating', icon: Star },
+  {
+    value: `${COMPANY.googleRating.toFixed(1)}`,
+    label: 'Google rating',
+    icon: Star,
+  },
 ];
 
 export default function HomePage() {
@@ -141,7 +145,9 @@ export default function HomePage() {
               </div>
               <h2 className="mt-6 max-w-xl font-serif text-4xl leading-[1.08] sm:text-5xl lg:text-6xl">
                 One remarkable address.{' '}
-                <em className="font-normal text-primary">Every moment yours.</em>
+                <em className="font-normal text-primary">
+                  Every moment yours.
+                </em>
               </h2>
               <p className="mt-7 max-w-xl text-base leading-8 text-white/65 sm:text-lg">
                 From quiet getting-ready moments to a courtyard ceremony and
@@ -196,9 +202,9 @@ export default function HomePage() {
               Host events with timeless elegance and effortless flow
             </h2>
             <p className="mt-5 text-base text-foreground/70 sm:text-lg">
-              Every corner of Batres Grand Venue is crafted to feel
-              intentional, warm, and remarkable for both intimate gatherings and
-              grand celebrations.
+              Every corner of Batres Grand Venue is crafted to feel intentional,
+              warm, and remarkable for both intimate gatherings and grand
+              celebrations.
             </p>
           </div>
 

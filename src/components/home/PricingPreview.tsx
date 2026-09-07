@@ -86,7 +86,7 @@ export default function PricingPreview() {
                 ))}
               </ul>
               <Link
-                href="/contact"
+                href={pkg.href}
                 className="inline-flex items-center gap-2 text-[#C4A35A] text-xs tracking-[0.2em] uppercase hover:gap-3 transition-all"
               >
                 View Details <ArrowRight size={12} />
@@ -95,12 +95,18 @@ export default function PricingPreview() {
           ))}
         </div>
 
-        <div className="mt-12 text-center">
+        <div className="mt-12 flex flex-wrap items-center justify-center gap-4 text-center">
           <Link
-            href="/contact"
+            href="/pricing"
             className="inline-flex px-8 py-3.5 border border-[#C4A35A] text-[#C4A35A] text-xs tracking-[0.2em] uppercase hover:bg-[#C4A35A] hover:text-black transition-colors duration-200"
           >
-            See Full Pricing
+            Compare Packages
+          </Link>
+          <Link
+            href="/packages/special"
+            className="inline-flex text-[#C4A35A]/80 text-xs tracking-[0.2em] uppercase hover:text-[#C4A35A] transition-colors"
+          >
+            Special Packages →
           </Link>
         </div>
       </div>

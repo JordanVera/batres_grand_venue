@@ -4,9 +4,9 @@ import PricingContent from '@/components/pricing/PricingContent';
 import { pageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'Wedding Packages from $1,295',
+  title: 'Wedding Packages from $9,515',
   description:
-    'Wedding and event packages at Batres Grand Venue start at $1,295. Ceremony and reception at 14803 Vera Dr in Humble, Texas — reception hall, courtyard, and suites for up to 250 guests.',
+    'Silver, Gold, and Platinum packages at Batres Grand Venue start at $9,515. Weddings and quinceañeras at 14803 Vera Dr in Humble, Texas — up to 250 guests.',
   path: '/pricing',
 });
 

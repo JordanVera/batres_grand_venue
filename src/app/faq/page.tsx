@@ -8,7 +8,7 @@ import { pageMetadata } from '@/lib/seo';
 export const metadata: Metadata = pageMetadata({
   title: 'Wedding Venue FAQs',
   description:
-    'FAQs for Batres Grand Venue in Humble, Texas — packages from $1,295, guest capacity, parking, alcohol policy, overnight suites, accessibility, and how to book a private tour at 14803 Vera Dr.',
+    'FAQs for Batres Grand Venue in Humble, Texas — packages from $9,515, guest capacity, parking, VIP suite, and how to book a private tour at 14803 Vera Dr.',
   path: '/faq',
 });
 

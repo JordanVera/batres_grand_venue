@@ -28,8 +28,8 @@ export const NAV_LINKS = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
   { label: 'Gallery', href: '/gallery' },
+  { label: 'Packages', href: '/packages' },
   { label: 'Reviews', href: '/reviews' },
-  { label: 'Tour', href: '/tour' },
   { label: 'FAQ', href: '/faq' },
   { label: 'Contact', href: '/contact' },
 ];
@@ -47,7 +47,7 @@ export { GALLERY_IMAGES, type GalleryImage } from './gallery-images';
 
 export const ABOUT_CONTENT = {
   intro:
-    "Batres Grand Venue is a family-owned premier event space in Humble, TX — dedicated to unforgettable weddings, quinceañeras, and celebrations with elegance, personalized service, and attention to every detail.",
+    'Batres Grand Venue is a family-owned premier event space in Humble, TX — dedicated to unforgettable weddings, quinceañeras, and celebrations with elegance, personalized service, and attention to every detail.',
   body: 'Our 4,500 sq ft reception hall welcomes guests with sparkling crystal chandeliers, a custom grand staircase with iron railing, a glamorous full-service bar, stained concrete floors, 24-foot ceilings, and expansive windows that flood the room with natural light.',
   evolution:
     'From intimate gatherings to grand events for up to 250 guests, our Silver, Gold, and Platinum packages plus a private VIP bridal suite with balcony access make planning stress-free — with an on-site team that treats every celebration like family.',
@@ -93,7 +93,7 @@ export const REVIEWS = [
     name: 'Marina R.',
     event: 'Wedding · Platinum Package',
     rating: 5,
-    text: "I chose the platinum package and felt like I checked into a 5-star resort. Dinner for 250, cake, bar, photo booth, DJ, waiters, parking attendants — Maggie was on top of every detail and I was a stress-free bride.",
+    text: 'I chose the platinum package and felt like I checked into a 5-star resort. Dinner for 250, cake, bar, photo booth, DJ, waiters, parking attendants — Maggie was on top of every detail and I was a stress-free bride.',
   },
   {
     id: 2,
@@ -121,14 +121,14 @@ export const REVIEWS = [
     name: 'Google Reviewer',
     event: 'Wedding · Google Review',
     rating: 5,
-    text: "A hidden gem in Humble. Customizable floor plans, beautiful lighting, and a dedicated on-site team. Our guests could not stop talking about the space.",
+    text: 'A hidden gem in Humble. Customizable floor plans, beautiful lighting, and a dedicated on-site team. Our guests could not stop talking about the space.',
   },
   {
     id: 6,
     name: 'Google Reviewer',
     event: 'Celebration · Google Review',
     rating: 5,
-    text: "Planning was easy and they were attentive to every last detail. The grand staircase and crystal chandeliers made our celebration look like a magazine.",
+    text: 'Planning was easy and they were attentive to every last detail. The grand staircase and crystal chandeliers made our celebration look like a magazine.',
   },
 ] as const;
 
@@ -142,8 +142,8 @@ export const FAQS: FaqItem[] = [
   {
     question: 'What are your rental rates?',
     answer:
-      'Batres Grand Venue offers Silver, Gold, and Platinum packages plus seasonal specials. Pricing varies by day, guest count, and inclusions — contact us for current rates.',
-    link: { href: '/contact', label: 'Request Pricing' },
+      'Silver packages start at $9,515, Gold at $10,550, and Platinum at $13,050. Micro weddings start at $4,500 and Christmas corporate packages at $4,350. Pricing is subject to change.',
+    link: { href: '/pricing', label: 'Compare Packages' },
   },
   {
     question: 'How many guests can you accommodate?',

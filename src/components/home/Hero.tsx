@@ -17,7 +17,7 @@ const SLIDE_DURATION_MS = 7000;
 const HERO_SLIDES = [
   { src: '/gallery/gallery-01.jpg', alt: 'Batres Grand Venue photo 1' },
   { src: '/gallery/gallery-02.jpg', alt: 'Batres Grand Venue photo 2' },
-  { src: '/gallery/gallery-03.jpg', alt: 'Batres Grand Venue photo 3' },
+  { src: '/gallery/gallery-04.jpg', alt: 'Batres Grand Venue photo 3' },
 ] as const;
 
 export default function Hero() {
@@ -100,7 +100,9 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.55 }}
           className="mt-6 text-white/75 text-base sm:text-lg max-w-xl leading-relaxed"
         >
-          A family-owned banquet hall in Humble — crystal chandeliers, a grand staircase, and packages for weddings and quinceañeras up to 250 guests.
+          A family-owned banquet hall in Humble — crystal chandeliers, a grand
+          staircase, and packages for weddings and quinceañeras up to 250
+          guests.
         </motion.p>
 
         <motion.div

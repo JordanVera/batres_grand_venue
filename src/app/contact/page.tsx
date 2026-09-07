@@ -17,7 +17,7 @@ export default function ContactPage() {
     <>
       <section className="relative h-64 sm:h-80 overflow-hidden">
         <Image
-          src="/gallery/gallery-03.jpg"
+          src="/gallery/gallery-05.jpg"
           alt={`Contact ${COMPANY.name} — 14803 Vera Dr, Humble, Texas`}
           fill
           priority
@@ -26,8 +26,12 @@ export default function ContactPage() {
         />
         <div className="absolute inset-0 bg-black/65" />
         <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6 pt-20">
-          <p className="text-[#C4A35A] text-[10px] tracking-[0.4em] uppercase mb-4">Book a Tour</p>
-          <h1 className="font-serif text-white text-5xl sm:text-6xl">Contact Us</h1>
+          <p className="text-[#C4A35A] text-[10px] tracking-[0.4em] uppercase mb-4">
+            Book a Tour
+          </p>
+          <h1 className="font-serif text-white text-5xl sm:text-6xl">
+            Contact Us
+          </h1>
         </div>
       </section>
 
@@ -42,34 +46,49 @@ export default function ContactPage() {
                 Schedule Your Tour
               </h2>
               <p className="text-foreground/60 mt-4 leading-relaxed">
-                Reach out or fill out the form to inquire about availability, tour
-                our luxury Humble, Texas estate, and receive wedding package details.
+                Reach out or fill out the form to inquire about availability,
+                tour our luxury Humble, Texas estate, and receive wedding
+                package details.
               </p>
             </div>
 
             <ul className="flex flex-col gap-6">
               {COMPANY.phone ? (
                 <li>
-                  <a href={`tel:${COMPANY.phoneHref}`} className="flex items-start gap-4 group">
+                  <a
+                    href={`tel:${COMPANY.phoneHref}`}
+                    className="flex items-start gap-4 group"
+                  >
                     <div className="w-10 h-10 border border-[#C4A35A]/30 flex items-center justify-center flex-shrink-0">
                       <Phone size={14} className="text-[#C4A35A]" />
                     </div>
                     <div>
-                      <p className="text-[10px] tracking-[0.2em] uppercase text-foreground/40 mb-0.5">Text Us</p>
-                      <p className="text-foreground group-hover:text-[#C4A35A] transition-colors">{COMPANY.phone}</p>
+                      <p className="text-[10px] tracking-[0.2em] uppercase text-foreground/40 mb-0.5">
+                        Text Us
+                      </p>
+                      <p className="text-foreground group-hover:text-[#C4A35A] transition-colors">
+                        {COMPANY.phone}
+                      </p>
                     </div>
                   </a>
                 </li>
               ) : null}
               {COMPANY.email ? (
                 <li>
-                  <a href={`mailto:${COMPANY.email}`} className="flex items-start gap-4 group">
+                  <a
+                    href={`mailto:${COMPANY.email}`}
+                    className="flex items-start gap-4 group"
+                  >
                     <div className="w-10 h-10 border border-[#C4A35A]/30 flex items-center justify-center flex-shrink-0">
                       <Mail size={14} className="text-[#C4A35A]" />
                     </div>
                     <div>
-                      <p className="text-[10px] tracking-[0.2em] uppercase text-foreground/40 mb-0.5">Email</p>
-                      <p className="text-foreground group-hover:text-[#C4A35A] transition-colors">{COMPANY.email}</p>
+                      <p className="text-[10px] tracking-[0.2em] uppercase text-foreground/40 mb-0.5">
+                        Email
+                      </p>
+                      <p className="text-foreground group-hover:text-[#C4A35A] transition-colors">
+                        {COMPANY.email}
+                      </p>
                     </div>
                   </a>
                 </li>
@@ -79,8 +98,14 @@ export default function ContactPage() {
                   <MapPin size={14} className="text-[#C4A35A]" />
                 </div>
                 <div>
-                  <p className="text-[10px] tracking-[0.2em] uppercase text-foreground/40 mb-0.5">Location</p>
-                  <p className="text-foreground">{COMPANY.address}<br />{COMPANY.city}</p>
+                  <p className="text-[10px] tracking-[0.2em] uppercase text-foreground/40 mb-0.5">
+                    Location
+                  </p>
+                  <p className="text-foreground">
+                    {COMPANY.address}
+                    <br />
+                    {COMPANY.city}
+                  </p>
                 </div>
               </li>
               <li className="flex items-start gap-4">
@@ -88,21 +113,35 @@ export default function ContactPage() {
                   <Clock size={14} className="text-[#C4A35A]" />
                 </div>
                 <div>
-                  <p className="text-[10px] tracking-[0.2em] uppercase text-foreground/40 mb-0.5">Hours</p>
-                  <p className="text-foreground">By appointment · Private tours</p>
+                  <p className="text-[10px] tracking-[0.2em] uppercase text-foreground/40 mb-0.5">
+                    Hours
+                  </p>
+                  <p className="text-foreground">
+                    By appointment · Private tours
+                  </p>
                 </div>
               </li>
             </ul>
 
-            {(COMPANY.instagram || COMPANY.facebook) ? (
+            {COMPANY.instagram || COMPANY.facebook ? (
               <div className="flex gap-3">
                 {COMPANY.instagram ? (
-                  <a href={COMPANY.instagram} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2.5 border border-border hover:border-[#C4A35A]/50 text-foreground/60 hover:text-[#C4A35A] text-xs transition-all">
+                  <a
+                    href={COMPANY.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-4 py-2.5 border border-border hover:border-[#C4A35A]/50 text-foreground/60 hover:text-[#C4A35A] text-xs transition-all"
+                  >
                     <Camera size={13} /> Instagram
                   </a>
                 ) : null}
                 {COMPANY.facebook ? (
-                  <a href={COMPANY.facebook} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2.5 border border-border hover:border-[#C4A35A]/50 text-foreground/60 hover:text-[#C4A35A] text-xs transition-all">
+                  <a
+                    href={COMPANY.facebook}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-4 py-2.5 border border-border hover:border-[#C4A35A]/50 text-foreground/60 hover:text-[#C4A35A] text-xs transition-all"
+                  >
                     <Globe size={13} /> Facebook
                   </a>
                 ) : null}
@@ -111,9 +150,12 @@ export default function ContactPage() {
           </div>
 
           <div className="bg-card border border-border p-8 md:p-10">
-            <h3 className="font-serif text-foreground text-2xl mb-2">Send an Inquiry</h3>
+            <h3 className="font-serif text-foreground text-2xl mb-2">
+              Send an Inquiry
+            </h3>
             <p className="text-foreground/50 text-sm mb-8">
-              Tell us about your wedding or celebration and we&apos;ll share availability and pricing for Batres Grand Venue.
+              Tell us about your wedding or celebration and we&apos;ll share
+              availability and pricing for Batres Grand Venue.
             </p>
             <InquiryForm />
           </div>
